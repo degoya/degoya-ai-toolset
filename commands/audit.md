@@ -1,6 +1,6 @@
 ---
 description: Run all applicable degoya-ai-toolset checks (legal, privacy, accessibility, security, performance, i18n, SEO/GEO, text, tests, API, licences, plan) over the current project and produce one consolidated report.
-argument-hint: "[areas, comma-separated] [path] [--quick]"
+argument-hint: "[content|code|compliance|plan|all] [areas, comma-separated] [path] [--quick]"
 ---
 
 # /audit
@@ -11,6 +11,17 @@ Arguments: `$ARGUMENTS`
 
 ## 1. Parse arguments
 
+- **Group** (optional, first argument): runs a predefined set of areas.
+
+  | Group | Areas | Typical audience |
+  |---|---|---|
+  | `content` | `text`, `seo`, `i18n` (content side), `a11y` (content side: alt texts, headings, link texts, plain language) | marketing, editors, UX writers |
+  | `code` | `security`, `perf`, `tests`, `api`, `i18n` (code side), `a11y` (code side: semantics, keyboard, ARIA) | developers |
+  | `compliance` | `legal`, `dpia`, `licenses`, `a11y` (EAA/BFSG conformance and statement) | management, legal, DPO |
+  | `plan` | `plan` | PO, team |
+  | `all` (default) | every applicable area | everyone |
+
+  Groups and areas can be combined, e.g. `/audit code licenses`. Areas belonging to several groups are checked only from that group's angle.
 - **Areas** (comma-separated, optional): `plan`, `legal`, `dpia`, `text`, `a11y`, `i18n`, `seo`, `security`, `perf`, `tests`, `api`, `licenses`. Default: all applicable areas.
 - **Path** (optional): limit the audit to this directory or file.
 - `--quick`: only automated checks and the top findings per area (max. 5), no deep manual review.
@@ -53,12 +64,12 @@ For each selected area, apply the corresponding skill's checklist and rules exac
 
 ## 5. Consolidate
 
-Write the report to `audit/AUDIT-REPORT-<YYYY-MM-DD>.md` (create the folder if needed) and show the executive summary in the chat.
+Write the report to `audit/AUDIT-REPORT-<group>-<YYYY-MM-DD>.md` (create the folder if needed) and show the executive summary in the chat.
 
 ```markdown
 # Project audit – <project> – <date>
 
-Scope: <path or whole repo> · Areas: <list> · Mode: full | quick
+Scope: <path or whole repo> · Group: <group> · Areas: <list> · Mode: full | quick
 Project: <type, stack, locales>
 
 ## Executive summary
