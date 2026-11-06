@@ -1,6 +1,6 @@
 ---
 description: Run all applicable degoya-ai-toolset checks (legal, privacy, accessibility, security, performance, i18n, SEO/GEO, text, tests, API, licences, plan) over the current project and produce one consolidated report.
-argument-hint: "[content|code|compliance|plan|all] [areas, comma-separated] [path] [--quick]"
+argument-hint: "[all|content|code|compliance|plan] [areas] [path] [--quick] – no argument opens a selection menu"
 ---
 
 # /audit
@@ -22,9 +22,37 @@ Arguments: `$ARGUMENTS`
   | `all` (default) | every applicable area | everyone |
 
   Groups and areas can be combined, e.g. `/audit code licenses`. Areas belonging to several groups are checked only from that group's angle.
-- **Areas** (comma-separated, optional): `plan`, `legal`, `dpia`, `text`, `a11y`, `i18n`, `seo`, `security`, `perf`, `tests`, `api`, `licenses`. Default: all applicable areas.
+- **Areas** (comma-separated, optional): `plan`, `legal`, `dpia`, `text`, `a11y`, `i18n`, `seo`, `security`, `perf`, `tests`, `api`, `licenses`.
 - **Path** (optional): limit the audit to this directory or file.
 - `--quick`: only automated checks and the top findings per area (max. 5), no deep manual review.
+
+If no group or area is given, do **not** assume `all`: show the interactive selection in step 1a. `all` must be passed explicitly to skip the menu.
+
+## 1a. Interactive selection (when called without group/area)
+
+Use the `AskUserQuestion` tool so the user can pick with arrow keys. Write questions and labels in the user's language if it is clear from the conversation, otherwise in English.
+
+**Question 1** (single choice, header "Audit"): "What would you like to audit?"
+- **Full audit (Recommended)** – all applicable areas
+- **By group** – content, code, compliance or plan
+- **Individual checks** – pick single checks
+- **Quick scan** – all areas, automated checks and top 5 findings each (`--quick`)
+
+**If "By group"**, ask (multiSelect, header "Groups"): "Which groups?"
+- **Content** – copy, SEO/GEO, i18n content, accessible content
+- **Code** – security, performance, tests, API, i18n/a11y in code
+- **Compliance** – legal, DPIA, licences, EAA/BFSG conformance
+- **Plan** – plans, specs, roadmap, acceptance criteria
+
+**If "Individual checks"**, ask these four questions in one call (all multiSelect; the user may leave a question empty):
+1. header "Content": Text review (`text`) · SEO/GEO (`seo`) · i18n (`i18n`) · Accessibility (`a11y`)
+2. header "Code": Security (`security`) · Performance (`perf`) · Tests (`tests`) · API design (`api`)
+3. header "Compliance": Legal/GDPR/AI Act (`legal`) · DPIA (`dpia`) · Licences (`licenses`) · Plan review (`plan`)
+4. header "Depth" (single choice): Full review (Recommended) · Quick scan
+
+If nothing at all was selected, ask again once; then stop.
+
+After the selection, state in one line what will run (e.g. "Running: security, perf, licences – full review") and continue. If the `AskUserQuestion` tool is not available, show the same options as a numbered list and wait for the answer.
 
 ## 2. Detect the project
 

@@ -1,6 +1,6 @@
 {
   "name": "degoya-ai-toolset",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Review and quality skills for software, web and app projects: plan review with SMART acceptance criteria, EU legal compliance, DPIA, native-level text review, accessibility, i18n, SEO/GEO, security, performance, testing, API design, release notes, commit/PR texts and license checks. Run them all with /audit or one by one.",
   "author": { "name": "degoya" },
   "repository": "https://github.com/degoya/degoya-ai-toolset",

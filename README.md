@@ -6,7 +6,8 @@ Run every applicable check at once with **`/audit`**, or use each skill on its o
 ## Usage
 
 ```text
-/degoya-ai-toolset:audit                       # full audit of the current project
+/degoya-ai-toolset:audit                       # opens a selection menu (full, groups, single checks, quick scan)
+/degoya-ai-toolset:audit all                   # full audit without the menu
 /degoya-ai-toolset:audit content               # copy, SEO/GEO, i18n content, accessible content
 /degoya-ai-toolset:audit code                  # security, performance, tests, API, i18n/a11y in code
 /degoya-ai-toolset:audit compliance            # legal, DPIA, licences, EAA/BFSG conformance
