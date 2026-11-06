@@ -88,6 +88,7 @@ For each selected area, apply the corresponding skill's checklist and rules exac
 
 - If a subagent/Task tool is available, run independent areas in parallel, one subagent per area, each given: project summary from step 2, scope/path, the skill name to load, `--quick` if set, and the instruction to return findings in the table format below. Otherwise run them one after another.
 - Run safe, read-only automated tools when available (e.g. dependency audit, licence scan, axe/Lighthouse against a local dev server). Never run anything destructive, never send data to external services without asking.
+- **Keep the repo clean:** before starting, record `git status --porcelain`. Run all tools from a temp directory outside the repo (`mktemp -d`), with Chrome profiles (`--user-data-dir`) and outputs in that temp directory – see the "Workspace hygiene" section of the skills. Subagents must follow the same rule. After all checks, compare `git status --porcelain` with the recorded state, delete anything the audit created outside `audit/`, delete the temp directory, and list the clean-up in the report.
 - Every finding must point to a concrete location (file:line, URL, screen) and carry a fix suggestion.
 
 ## 5. Consolidate

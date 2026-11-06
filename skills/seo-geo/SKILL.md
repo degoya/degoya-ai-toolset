@@ -14,6 +14,23 @@ description: Reviews and optimises websites for classic search engines (SEO) and
 4. **GEO check:** checklist C.
 5. **Report** with prioritised actions (impact × effort).
 
+## Workspace hygiene (mandatory when running tools)
+
+Never leave tool artefacts in the user's project. Only `audit/` reports (and files the user asked for) may be written to the repo.
+
+- Run browser-based and scanning tools (Lighthouse, Chrome/Puppeteer/Playwright, axe CLI, Pa11y, SBOM/licence scanners) from a fresh temp directory **outside** the repo, and pass all output paths as absolute paths:
+  ```bash
+  AUDIT_TMP="$(mktemp -d "${TMPDIR:-/tmp}/degoya-audit.XXXXXX")"
+  (cd "$AUDIT_TMP" && npx lighthouse "$URL" --quiet \
+     --chrome-flags="--headless=new --user-data-dir=$AUDIT_TMP/chrome-profile" \
+     --output=json --output-path="$AUDIT_TMP/lighthouse.json")
+  # read results from $AUDIT_TMP, then:
+  rm -rf "$AUDIT_TMP"
+  ```
+- **WSL:** Lighthouse/chrome-launcher may start Windows Chrome and build its profile path from Windows env vars that are empty in WSL, creating folders like `undefined:\Users\undefined\AppData\Local\lighthouse.*` in the current directory. Running from `$AUDIT_TMP` keeps them out of the repo; alternatively point `CHROME_PATH` to a Linux Chrome/Chromium.
+- Before finishing, run `git status --porcelain` and compare with the state before the run. Remove anything the run created outside `audit/` (only files you created – never touch the user's own changes) and report what was cleaned up.
+- Do not install dependencies into the project (`npm install` in the repo, editing `package.json`/lockfiles) to run a check; use `npx`/temporary installs instead.
+
 ## A. Technical SEO
 - [ ] Indexable: no accidental `noindex`, `robots.txt` does not block important paths/resources, XML sitemap exists and is referenced in robots.txt.
 - [ ] Content in the initial HTML (SSR/SSG), not client-rendered only; also important for AI crawlers, which often do not execute JavaScript.

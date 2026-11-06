@@ -19,6 +19,23 @@ Goal: everyone can perceive, operate and understand the product, and it works wi
 3. **Manual checks** with [references/wcag-checklist.md](references/wcag-checklist.md): keyboard, screen-reader semantics, zoom/reflow, contrast, forms, media.
 4. **Report** with fixes.
 
+## Workspace hygiene (mandatory when running tools)
+
+Never leave tool artefacts in the user's project. Only `audit/` reports (and files the user asked for) may be written to the repo.
+
+- Run browser-based and scanning tools (Lighthouse, Chrome/Puppeteer/Playwright, axe CLI, Pa11y, SBOM/licence scanners) from a fresh temp directory **outside** the repo, and pass all output paths as absolute paths:
+  ```bash
+  AUDIT_TMP="$(mktemp -d "${TMPDIR:-/tmp}/degoya-audit.XXXXXX")"
+  (cd "$AUDIT_TMP" && npx lighthouse "$URL" --quiet \
+     --chrome-flags="--headless=new --user-data-dir=$AUDIT_TMP/chrome-profile" \
+     --output=json --output-path="$AUDIT_TMP/lighthouse.json")
+  # read results from $AUDIT_TMP, then:
+  rm -rf "$AUDIT_TMP"
+  ```
+- **WSL:** Lighthouse/chrome-launcher may start Windows Chrome and build its profile path from Windows env vars that are empty in WSL, creating folders like `undefined:\Users\undefined\AppData\Local\lighthouse.*` in the current directory. Running from `$AUDIT_TMP` keeps them out of the repo; alternatively point `CHROME_PATH` to a Linux Chrome/Chromium.
+- Before finishing, run `git status --porcelain` and compare with the state before the run. Remove anything the run created outside `audit/` (only files you created – never touch the user's own changes) and report what was cleaned up.
+- Do not install dependencies into the project (`npm install` in the repo, editing `package.json`/lockfiles) to run a check; use `npx`/temporary installs instead.
+
 ## Report format
 ```
 ## Accessibility audit: <subject>

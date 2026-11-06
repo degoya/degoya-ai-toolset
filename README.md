@@ -208,6 +208,7 @@ The skills read project context automatically. To steer them, add any of these t
 | Old behaviour after an update | `/plugin marketplace update degoya-ai-toolset`, then `/reload-plugins` or restart Claude Code. |
 | Skill does not trigger automatically | Call it explicitly with `/degoya-ai-toolset:<skill>`. |
 | No menu appears for `/audit` | Your Claude Code version may not support interactive questions; the command then shows a numbered list. Or pass arguments directly, e.g. `/degoya-ai-toolset:audit all`. |
+| Folders like `undefined:\Users\undefined\AppData\Local\lighthouse.*` appear in the repo (WSL) | Created by Lighthouse in versions before 0.3.1. Update the plugin, then remove them in the project root: `ls -d undefined*` to check, `rm -rf -- undefined*` to delete. |
 | Automated checks are skipped | The tool (e.g. `npx`, `composer`) is not installed or no dev server is running. The report lists what was not checked. |
 
 ## Contributing
