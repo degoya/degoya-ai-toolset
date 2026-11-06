@@ -1,0 +1,92 @@
+---
+description: Run all applicable degoya-ai-toolset checks (legal, privacy, accessibility, security, performance, i18n, SEO/GEO, text, tests, API, licences, plan) over the current project and produce one consolidated report.
+argument-hint: "[areas, comma-separated] [path] [--quick]"
+---
+
+# /audit
+
+Run a consolidated quality audit of this project using the skills of the degoya-ai-toolset plugin.
+
+Arguments: `$ARGUMENTS`
+
+## 1. Parse arguments
+
+- **Areas** (comma-separated, optional): `plan`, `legal`, `dpia`, `text`, `a11y`, `i18n`, `seo`, `security`, `perf`, `tests`, `api`, `licenses`. Default: all applicable areas.
+- **Path** (optional): limit the audit to this directory or file.
+- `--quick`: only automated checks and the top findings per area (max. 5), no deep manual review.
+
+## 2. Detect the project
+
+Inspect the repository (README, CLAUDE.md, package manifests, framework config, `docs/`, routes, mobile project files) and determine:
+- Type: website, web app, SaaS, API/backend, mobile app, library, CLI.
+- Stack and languages, target markets/locales, whether personal data or AI features are involved.
+- Existing reports, Definition of Done, style guides, glossaries.
+
+## 3. Select areas
+
+Use the requested areas, or select automatically:
+
+| Area | Skill | Run when |
+|---|---|---|
+| `plan` | `plan-review` (post-review mode) | plan, spec, roadmap or ticket documents exist |
+| `legal` | `eu-legal-compliance` | public website/app, personal data, third-party assets, AI features |
+| `dpia` | `dsfa` (threshold analysis only) | personal data is processed |
+| `text` | `text-review` | user-facing copy exists (UI strings, content, store texts) |
+| `a11y` | `accessibility` | any user interface |
+| `i18n` | `i18n` | UI exists; full depth if more than one locale or planned |
+| `seo` | `seo-geo` | public website or web app with public pages |
+| `security` | `security-check` | always |
+| `perf` | `performance` | UI, API or backend exists |
+| `tests` | `test-strategy` (review of existing tests) | always |
+| `api` | `api-design-review` | API, OpenAPI/GraphQL schema or webhooks exist |
+| `licenses` | `license-check` | dependencies or third-party assets exist |
+
+Skip an area only with a one-line reason. `release-notes` and `commit-pr-text` are generators, not audits, and are not part of `/audit`.
+
+## 4. Run the checks
+
+For each selected area, apply the corresponding skill's checklist and rules exactly as the skill describes them (load the skill, do not work from memory).
+
+- If a subagent/Task tool is available, run independent areas in parallel, one subagent per area, each given: project summary from step 2, scope/path, the skill name to load, `--quick` if set, and the instruction to return findings in the table format below. Otherwise run them one after another.
+- Run safe, read-only automated tools when available (e.g. dependency audit, licence scan, axe/Lighthouse against a local dev server). Never run anything destructive, never send data to external services without asking.
+- Every finding must point to a concrete location (file:line, URL, screen) and carry a fix suggestion.
+
+## 5. Consolidate
+
+Write the report to `audit/AUDIT-REPORT-<YYYY-MM-DD>.md` (create the folder if needed) and show the executive summary in the chat.
+
+```markdown
+# Project audit – <project> – <date>
+
+Scope: <path or whole repo> · Areas: <list> · Mode: full | quick
+Project: <type, stack, locales>
+
+## Executive summary
+<3–5 sentences: overall state, biggest risks, go/no-go for release if relevant>
+
+| Area | Critical | High | Medium | Low | Status |
+|---|---|---|---|---|---|
+| Security | 0 | 2 | 3 | 1 | needs work |
+
+## Top 10 actions
+| # | Area | Finding | Location | Severity | Fix | Effort (S/M/L) |
+
+## Findings by area
+### <Area>
+<the skill's own report format>
+
+## Skipped areas and not checked
+<area – reason>
+
+## Open questions
+<question – addressed to (PO/Dev/QA/Legal/DPO)>
+```
+
+Severity scale across all areas: **Critical** (legal violation, exploitable vulnerability, data loss, blocks a user group completely), **High**, **Medium**, **Low**.
+
+## 6. Rules
+
+- Report in the language the user writes in.
+- No invented facts; mark assumptions and anything that needs a human expert (lawyer, DPO, accessibility auditor).
+- Do not fix anything during the audit. At the end, offer to fix the top actions or open issues for them.
+- Deduplicate findings that several areas report (e.g. third-party tracking script appears in legal, privacy and performance): list once, tag all areas.
