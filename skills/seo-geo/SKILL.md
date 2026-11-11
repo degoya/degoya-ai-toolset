@@ -1,6 +1,6 @@
 ---
 name: seo-geo
-description: Reviews and optimises websites for classic search engines (SEO) and for AI answer engines (GEO/AEO: ChatGPT, Perplexity, Google AI Overviews/AI Mode, Claude, Gemini): technical SEO, content, structured data, internal linking, international SEO, citability in AI answers. Use for "SEO check", "GEO", "show up in AI answers", "meta tags", "structured data", "improve rankings", "llms.txt".
+description: 'Reviews and optimises websites for classic search engines (SEO) and for AI answer engines (GEO/AEO: ChatGPT, Perplexity, Google AI Overviews/AI Mode, Claude, Gemini): technical SEO, content, structured data, internal linking, international SEO, citability in AI answers. Use for "SEO check", "GEO", "show up in AI answers", "meta tags", "structured data", "improve rankings", "llms.txt".'
 ---
 
 # SEO and GEO

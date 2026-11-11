@@ -1,6 +1,6 @@
 ---
 name: test-strategy
-description: Designs and reviews test strategies and test plans for features, websites, apps and APIs: test pyramid, which tests at which level, derivation from acceptance criteria, test data, edge cases, E2E, accessibility, performance and security tests, CI integration. Use for "how should we test this?", "test plan", "test strategy", "what tests do we need", "review test coverage".
+description: 'Designs and reviews test strategies and test plans for features, websites, apps and APIs: test pyramid, which tests at which level, derivation from acceptance criteria, test data, edge cases, E2E, accessibility, performance and security tests, CI integration. Use for "how should we test this?", "test plan", "test strategy", "what tests do we need", "review test coverage".'
 ---
 
 # Test strategy

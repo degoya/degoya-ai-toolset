@@ -1,6 +1,6 @@
 ---
 name: security-check
-description: Security review of plans, code, configuration and dependencies for web, app and API projects based on OWASP Top 10, OWASP ASVS and MASVS (mobile): auth, access control, input handling, secrets, dependencies, headers, cloud configuration and LLM-specific risks. Use for "security review", "is this secure?", "find vulnerabilities", "OWASP check", "pentest preparation", "check for prompt injection".
+description: 'Security review of plans, code, configuration and dependencies for web, app and API projects based on OWASP Top 10, OWASP ASVS and MASVS (mobile): auth, access control, input handling, secrets, dependencies, headers, cloud configuration and LLM-specific risks. Use for "security review", "is this secure?", "find vulnerabilities", "OWASP check", "pentest preparation", "check for prompt injection".'
 ---
 
 # Security check

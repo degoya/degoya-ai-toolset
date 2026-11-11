@@ -1,6 +1,6 @@
 ---
 name: commit-pr-text
-description: Writes and reviews commit messages (Conventional Commits) and pull request descriptions from the current diff: summary, motivation, changes, test evidence, risks, screenshots note, breaking changes, linked tickets. Use for "write a commit message", "PR description", "summarise my changes", "review my commit message".
+description: 'Writes and reviews commit messages (Conventional Commits) and pull request descriptions from the current diff: summary, motivation, changes, test evidence, risks, screenshots note, breaking changes, linked tickets. Use for "write a commit message", "PR description", "summarise my changes", "review my commit message".'
 ---
 
 # Commit and PR texts

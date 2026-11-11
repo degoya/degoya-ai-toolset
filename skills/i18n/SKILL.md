@@ -1,6 +1,6 @@
 ---
 name: i18n
-description: Plans and reviews internationalisation and localisation of websites and apps: externalised strings, plural rules, date/number/currency formats, RTL, text expansion, language switcher, URL structure, hreflang, translation workflow and QA. Use for "make this multilingual", "i18n", "l10n", "add a language", "localisation check", "find hard-coded strings".
+description: 'Plans and reviews internationalisation and localisation of websites and apps: externalised strings, plural rules, date/number/currency formats, RTL, text expansion, language switcher, URL structure, hreflang, translation workflow and QA. Use for "make this multilingual", "i18n", "l10n", "add a language", "localisation check", "find hard-coded strings".'
 ---
 
 # Internationalisation (i18n) and localisation (l10n)

@@ -1,6 +1,6 @@
 ---
 name: performance
-description: Reviews and improves performance of websites, web apps, mobile apps and APIs: Core Web Vitals (LCP, INP, CLS), load time, bundle size, images, caching, database queries, API latency, app start-up and memory, with a performance budget. Use for "it's too slow", "performance review", "Core Web Vitals", "improve Lighthouse score", "load time", "bundle too big", "N+1".
+description: 'Reviews and improves performance of websites, web apps, mobile apps and APIs: Core Web Vitals (LCP, INP, CLS), load time, bundle size, images, caching, database queries, API latency, app start-up and memory, with a performance budget. Use for "it''s too slow", "performance review", "Core Web Vitals", "improve Lighthouse score", "load time", "bundle too big", "N+1".'
 ---
 
 # Performance

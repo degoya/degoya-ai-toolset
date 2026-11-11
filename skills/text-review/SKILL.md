@@ -1,6 +1,6 @@
 ---
 name: text-review
-description: Reviews and improves copy to native-speaker level in any language: spelling, grammar, punctuation, idiom, style, tone, consistency, terminology and readability, for UI strings, websites, app-store listings, docs, emails and marketing. Use for "proofread this", "does this sound natural?", "native speaker check", "review this copy", "improve microcopy", "Korrektur lesen".
+description: 'Reviews and improves copy to native-speaker level in any language: spelling, grammar, punctuation, idiom, style, tone, consistency, terminology and readability, for UI strings, websites, app-store listings, docs, emails and marketing. Use for "proofread this", "does this sound natural?", "native speaker check", "review this copy", "improve microcopy", "Korrektur lesen".'
 ---
 
 # Text review (native-speaker level)

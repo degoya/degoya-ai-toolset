@@ -1,6 +1,6 @@
 ---
 name: api-design-review
-description: Reviews and designs REST, GraphQL and webhook APIs and OpenAPI specs: resources and naming, HTTP methods and status codes, error format (RFC 9457), pagination, filtering, versioning, idempotency, auth, rate limits, backward compatibility and docs. Use for "review API design", "review OpenAPI", "design an endpoint", "is this API good?", "is this a breaking change?".
+description: 'Reviews and designs REST, GraphQL and webhook APIs and OpenAPI specs: resources and naming, HTTP methods and status codes, error format (RFC 9457), pagination, filtering, versioning, idempotency, auth, rate limits, backward compatibility and docs. Use for "review API design", "review OpenAPI", "design an endpoint", "is this API good?", "is this a breaking change?".'
 ---
 
 # API design review

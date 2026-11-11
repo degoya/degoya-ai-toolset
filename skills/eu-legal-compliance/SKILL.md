@@ -1,6 +1,6 @@
 ---
 name: eu-legal-compliance
-description: Legal pre-assessment of websites, apps, features and copy under EU and German/Austrian law: GDPR and ePrivacy/TDDDG (cookies, consent, privacy notice, DPAs), third-party rights (copyright, trademarks, image and personality rights, licences), AI labelling under the EU AI Act Art. 50, mandatory information (imprint, terms, withdrawal, pricing) and legally sound wording. Use for "GDPR check", "is this legally OK", "third-party rights", "AI labelling", "check imprint/privacy policy", "cookie banner".
+description: 'Legal pre-assessment of websites, apps, features and copy under EU and German/Austrian law: GDPR and ePrivacy/TDDDG (cookies, consent, privacy notice, DPAs), third-party rights (copyright, trademarks, image and personality rights, licences), AI labelling under the EU AI Act Art. 50, mandatory information (imprint, terms, withdrawal, pricing) and legally sound wording. Use for "GDPR check", "is this legally OK", "third-party rights", "AI labelling", "check imprint/privacy policy", "cookie banner".'
 ---
 
 # EU legal compliance

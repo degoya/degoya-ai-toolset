@@ -1,6 +1,6 @@
 ---
 name: dsfa
-description: Determines whether a data protection impact assessment (DPIA, German "DSFA", GDPR Art. 35) is required and drafts a structured DPIA for a feature, product or AI function: description of processing, necessity, risks to data subjects, measures, residual risk. Use for "do we need a DPIA?", "data protection impact assessment", "DSFA", "privacy risk assessment", "threshold analysis".
+description: 'Determines whether a data protection impact assessment (DPIA, German "DSFA", GDPR Art. 35) is required and drafts a structured DPIA for a feature, product or AI function: description of processing, necessity, risks to data subjects, measures, residual risk. Use for "do we need a DPIA?", "data protection impact assessment", "DSFA", "privacy risk assessment", "threshold analysis".'
 ---
 
 # Data protection impact assessment (DPIA / DSFA)

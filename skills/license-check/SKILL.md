@@ -1,6 +1,6 @@
 ---
 name: license-check
-description: Checks open-source dependencies, embedded assets (fonts, icons, images) and copied code for licences and their obligations: compatibility with the business model (proprietary, SaaS, app store), copyleft (GPL, LGPL, AGPL, MPL), attribution, NOTICE files, SBOM. Use for "check licences", "can we use this library?", "GPL problem?", "open-source compliance", "create an SBOM", "third-party notices".
+description: 'Checks open-source dependencies, embedded assets (fonts, icons, images) and copied code for licences and their obligations: compatibility with the business model (proprietary, SaaS, app store), copyleft (GPL, LGPL, AGPL, MPL), attribution, NOTICE files, SBOM. Use for "check licences", "can we use this library?", "GPL problem?", "open-source compliance", "create an SBOM", "third-party notices".'
 ---
 
 # Licence check

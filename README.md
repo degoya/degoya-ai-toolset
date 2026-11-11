@@ -67,6 +67,28 @@ git clone https://github.com/degoya/degoya-ai-toolset.git
 claude --plugin-dir ./degoya-ai-toolset
 ```
 
+### Install in [Pi](https://pi.dev)
+
+The skills follow the Agent Skills specification, so the same repository also works as a Pi package
+(`package.json` declares them under the `pi` key):
+
+```bash
+pi install git:github.com/degoya/degoya-ai-toolset
+```
+
+In a session the checks are available as `/audit` and `/skill:<name>`, for example
+`/skill:security-check`. Use `pi -e git:github.com/degoya/degoya-ai-toolset` to try it for a single
+run without installing it, and `/reload` after updating the package.
+
+Pi has no `AskUserQuestion` tool and no subagents; `/audit` falls back to a numbered list in the
+chat and runs the areas one after another.
+
+To work on a local clone instead of the published package:
+
+```bash
+pi install ./degoya-ai-toolset
+```
+
 ## Updating and removing
 
 ```text
